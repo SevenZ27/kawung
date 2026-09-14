@@ -69,6 +69,7 @@ What is checked automatically:
 
 ## What I learned
 
+
 - Drawing the motif as data (path strings) instead of directly as SVG made the canvas export almost free. The first idea was to rasterise the SVG through an `<img>`, which is less predictable across browsers.
 - Rounding every coordinate to two decimals was needed for the snapshot test. Without it, tiny float differences made "identical" SVGs differ.
 - Hashing the grid position into the seed, instead of pulling numbers from one long random stream, keeps the pattern stable when the screen shape changes.
