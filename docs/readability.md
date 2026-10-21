@@ -1,5 +1,7 @@
 # Clock readability, 4 motifs x 3 palettes
 
+Historical output from the original implementation. These median area-contrast values are not a readability certification. Current smoke-test output is saved to `qa/readability/readability.md`; browser rasterization can change the values slightly. Stage one labels this indicator as an estimate.
+
 Written by `e2e/matrix.spec.ts` (seed 4821, density 5, weight 4, rotation 0, phone 393 x 852).
 Ratio is the median WCAG contrast between the clock colour and the wallpaper pixels behind the date and clock, as reported in the app.
 

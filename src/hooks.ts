@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState, useSyncExternalStore } from 'react'
 import { parseParams, randomSeed, toSearch, type Params } from './lib/params'
-import { readScreen, type ScreenInfo } from './lib/screen'
+import { DEVICE_SIZE, exportSize, readScreen, type ScreenInfo } from './lib/screen'
 
 export function useMediaQuery(query: string): boolean {
   const subscribe = useCallback(
@@ -18,7 +18,11 @@ export const useReducedMotion = () => useMediaQuery('(prefers-reduced-motion: re
 
 // All settings live in the query string, so the address bar is always a share link.
 export function useUrlParams() {
-  const [params, setParams] = useState<Params>(() => parseParams(window.location.search, randomSeed()))
+  const [params, setParams] = useState<Params>(() => {
+    const parsed = parseParams(window.location.search, randomSeed())
+    const size = exportSize(readScreen(), 'hp', parsed)
+    return { ...parsed, x: size.width, y: size.height, ...(!window.location.search ? { g: 3, ...DEVICE_SIZE[parsed.v] } : {}) }
+  })
 
   useEffect(() => {
     const next = toSearch(params)

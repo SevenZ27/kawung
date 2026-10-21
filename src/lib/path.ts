@@ -39,6 +39,19 @@ export class PathBuilder {
     return this
   }
 
+  // Compact relative commands for dense isen in generation 3. Older generators
+  // keep their existing serialization so shared artwork hashes remain stable.
+  rect(cx: number, cy: number, rx: number, ry = rx): this {
+    this.parts.push(`M${num(cx-rx)} ${num(cy-ry)}h${num(rx*2)}v${num(ry*2)}h${num(-rx*2)}Z`)
+    return this
+  }
+
+  dot(cx: number, cy: number, r: number): this {
+    const arc = `a${num(r)} ${num(r)} 0 1 0`
+    this.parts.push(`M${num(cx+r)} ${num(cy)}${arc} ${num(-2*r)} 0${arc} ${num(2*r)} 0Z`)
+    return this
+  }
+
   ellipse(cx: number, cy: number, rx: number, ry: number, angleDeg = 0): this {
     const a = angleDeg * DEG
     const dx = rx * Math.cos(a)

@@ -1,0 +1,14 @@
+[
+  {
+    "id": "studio-display",
+    "before": 7008236,
+    "after": 456204,
+    "sha256": "e0be89332def9a1a05fe20905c2becb637efc441889f9a03810a2467f36b5454"
+  },
+  {
+    "id": "iphone",
+    "before": 6932404,
+    "after": 597312,
+    "sha256": "9485fb6b4ec8a73023fe803d444a8e415c1f5bddf91db816cb87755cc80ce081"
+  }
+]

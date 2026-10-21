@@ -1,0 +1,373 @@
+[
+  {
+    "engine": "chrome",
+    "version": "155.0.8059.85",
+    "width": 320,
+    "height": 568,
+    "overflowX": 0,
+    "overflowY": 0,
+    "preview": {
+      "w": 101.4375,
+      "h": 201.25
+    },
+    "artworkAspect": 0.46120107962213225,
+    "labels": [
+      {
+        "name": "Kawung",
+        "bottom": 528.75
+      },
+      {
+        "name": "Parang",
+        "bottom": 528.75
+      },
+      {
+        "name": "Truntum",
+        "bottom": 528.75
+      },
+      {
+        "name": "Ceplok",
+        "bottom": 528.75
+      }
+    ],
+    "violations": [],
+    "errors": [],
+    "png": {
+      "width": 1179,
+      "height": 2556
+    }
+  },
+  {
+    "engine": "chrome",
+    "version": "155.0.8059.85",
+    "width": 375,
+    "height": 812,
+    "overflowX": 0,
+    "overflowY": 0,
+    "preview": {
+      "w": 213.984375,
+      "h": 445.25
+    },
+    "artworkAspect": 0.46123325567850904,
+    "labels": [
+      {
+        "name": "Kawung",
+        "bottom": 782.25
+      },
+      {
+        "name": "Parang",
+        "bottom": 782.25
+      },
+      {
+        "name": "Truntum",
+        "bottom": 782.25
+      },
+      {
+        "name": "Ceplok",
+        "bottom": 782.25
+      }
+    ],
+    "touchDensity": "8",
+    "violations": [],
+    "errors": [],
+    "png": {
+      "width": 1179,
+      "height": 2556
+    }
+  },
+  {
+    "engine": "chrome",
+    "version": "155.0.8059.85",
+    "width": 390,
+    "height": 844,
+    "overflowX": 0,
+    "overflowY": 0,
+    "preview": {
+      "w": 228.75,
+      "h": 477.25
+    },
+    "artworkAspect": 0.46124661246612464,
+    "labels": [
+      {
+        "name": "Kawung",
+        "bottom": 814.25
+      },
+      {
+        "name": "Parang",
+        "bottom": 814.25
+      },
+      {
+        "name": "Truntum",
+        "bottom": 814.25
+      },
+      {
+        "name": "Ceplok",
+        "bottom": 814.25
+      }
+    ],
+    "violations": [],
+    "errors": [],
+    "png": {
+      "width": 1179,
+      "height": 2556
+    }
+  },
+  {
+    "engine": "chrome",
+    "version": "155.0.8059.85",
+    "width": 768,
+    "height": 1024,
+    "overflowX": 0,
+    "overflowY": 0,
+    "preview": {
+      "w": 311.09375,
+      "h": 655.75
+    },
+    "artworkAspect": 0.46126416568972256,
+    "labels": [
+      {
+        "name": "Kawung",
+        "bottom": 994.25
+      },
+      {
+        "name": "Parang",
+        "bottom": 994.25
+      },
+      {
+        "name": "Truntum",
+        "bottom": 994.25
+      },
+      {
+        "name": "Ceplok",
+        "bottom": 994.25
+      }
+    ],
+    "violations": [],
+    "errors": [],
+    "png": {
+      "width": 1179,
+      "height": 2556
+    }
+  },
+  {
+    "engine": "chrome",
+    "version": "155.0.8059.85",
+    "width": 1024,
+    "height": 768,
+    "overflowX": 0,
+    "overflowY": 0,
+    "preview": {
+      "w": 250.890625,
+      "h": 525.25
+    },
+    "artworkAspect": 0.46124815905743743,
+    "labels": [
+      {
+        "name": "Kawung",
+        "bottom": 178
+      },
+      {
+        "name": "Parang",
+        "bottom": 178
+      },
+      {
+        "name": "Truntum",
+        "bottom": 178
+      },
+      {
+        "name": "Ceplok",
+        "bottom": 178
+      }
+    ],
+    "violations": [],
+    "errors": [],
+    "png": {
+      "width": 1179,
+      "height": 2556
+    }
+  },
+  {
+    "engine": "chrome",
+    "version": "155.0.8059.85",
+    "width": 1440,
+    "height": 900,
+    "overflowX": 0,
+    "overflowY": 0,
+    "preview": {
+      "w": 311.546875,
+      "h": 656.75
+    },
+    "artworkAspect": 0.46125146312914556,
+    "labels": [
+      {
+        "name": "Kawung",
+        "bottom": 178
+      },
+      {
+        "name": "Parang",
+        "bottom": 178
+      },
+      {
+        "name": "Truntum",
+        "bottom": 178
+      },
+      {
+        "name": "Ceplok",
+        "bottom": 178
+      }
+    ],
+    "violations": [],
+    "errors": [],
+    "png": {
+      "width": 1179,
+      "height": 2556
+    }
+  },
+  {
+    "engine": "chrome",
+    "version": "155.0.8059.85",
+    "width": 812,
+    "height": 375,
+    "overflowX": 0,
+    "overflowY": 0,
+    "preview": {
+      "w": 107.4375,
+      "h": 214.25
+    },
+    "artworkAspect": 0.46122320302648173,
+    "labels": [
+      {
+        "name": "Kawung",
+        "bottom": 105.703125
+      },
+      {
+        "name": "Parang",
+        "bottom": 105.703125
+      },
+      {
+        "name": "Truntum",
+        "bottom": 105.703125
+      },
+      {
+        "name": "Ceplok",
+        "bottom": 105.703125
+      }
+    ],
+    "violations": [],
+    "errors": [],
+    "png": {
+      "width": 1179,
+      "height": 2556
+    }
+  },
+  {
+    "engine": "webkit",
+    "version": "26.6",
+    "width": 375,
+    "height": 812,
+    "overflowX": 0,
+    "overflowY": 0,
+    "preview": {
+      "w": 213.984375,
+      "h": 445.25
+    },
+    "artworkAspect": 0.46123325567850904,
+    "labels": [
+      {
+        "name": "Kawung",
+        "bottom": 782.25
+      },
+      {
+        "name": "Parang",
+        "bottom": 782.25
+      },
+      {
+        "name": "Truntum",
+        "bottom": 782.25
+      },
+      {
+        "name": "Ceplok",
+        "bottom": 782.25
+      }
+    ],
+    "violations": [],
+    "errors": [],
+    "png": {
+      "width": 1179,
+      "height": 2556
+    }
+  },
+  {
+    "engine": "webkit",
+    "version": "26.6",
+    "width": 1440,
+    "height": 900,
+    "overflowX": 0,
+    "overflowY": 0,
+    "preview": {
+      "w": 311.78125,
+      "h": 657.25
+    },
+    "artworkAspect": 0.4612573099415205,
+    "labels": [
+      {
+        "name": "Kawung",
+        "bottom": 178
+      },
+      {
+        "name": "Parang",
+        "bottom": 178
+      },
+      {
+        "name": "Truntum",
+        "bottom": 178
+      },
+      {
+        "name": "Ceplok",
+        "bottom": 178
+      }
+    ],
+    "violations": [],
+    "errors": [],
+    "png": {
+      "width": 1179,
+      "height": 2556
+    }
+  },
+  {
+    "engine": "webkit",
+    "version": "26.6",
+    "width": 812,
+    "height": 375,
+    "overflowX": 0,
+    "overflowY": 0,
+    "preview": {
+      "w": 107.4375,
+      "h": 214.25
+    },
+    "artworkAspect": 0.46122320302648173,
+    "labels": [
+      {
+        "name": "Kawung",
+        "bottom": 105.703125
+      },
+      {
+        "name": "Parang",
+        "bottom": 105.703125
+      },
+      {
+        "name": "Truntum",
+        "bottom": 105.703125
+      },
+      {
+        "name": "Ceplok",
+        "bottom": 105.703125
+      }
+    ],
+    "violations": [],
+    "errors": [],
+    "png": {
+      "width": 1179,
+      "height": 2556
+    }
+  }
+]

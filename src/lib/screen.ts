@@ -1,4 +1,4 @@
-import type { Device } from './params'
+import type { Device, Params } from './params'
 
 export interface ScreenInfo {
   width: number
@@ -13,13 +13,20 @@ export interface ExportSize {
   capped: boolean
 }
 
-// iOS Safari refuses canvases above 16,777,216 pixels, other browsers allow more.
+// Conservative app limits; actual canvas support varies by browser and device.
 export const MAX_CANVAS_AREA = 16_777_216
 export const MAX_CANVAS_SIDE = 16_384
 // Below this short side (CSS px) we treat the screen as a phone.
 export const PHONE_MAX_SHORT_SIDE = 600
-const REFERENCE_PHONE = 19.5 / 9
-const REFERENCE_DESKTOP = 16 / 10
+
+export const DEVICE_SIZE = {
+  hp: { x: 1320, y: 2868 },
+  desktop: { x: 2880, y: 5120 },
+} as const
+
+export function matchesDeviceSize(p: Pick<Params, 'v'|'x'|'y'>): boolean {
+  return p.x === DEVICE_SIZE[p.v].x && p.y === DEVICE_SIZE[p.v].y
+}
 
 export function isPhoneScreen(s: ScreenInfo): boolean {
   return Math.min(s.width, s.height) <= PHONE_MAX_SHORT_SIDE
@@ -28,12 +35,16 @@ export function isPhoneScreen(s: ScreenInfo): boolean {
 // Resolution comes from the screen that is showing the page: screen size times
 // devicePixelRatio. Phones may report width and height swapped in landscape, so the
 // short and long sides are sorted first.
-export function exportSize(s: ScreenInfo, device: Device): ExportSize {
-  const short = Math.min(s.width, s.height)
-  const long = Math.max(s.width, s.height)
+export function exportSize(s: ScreenInfo, device: Device, target?: Pick<Params, 'x' | 'y'>): ExportSize {
+  const safeSide = (v: number) => Number.isFinite(v) && v > 0 ? v : 1
+  const short = Math.min(safeSide(s.width), safeSide(s.height))
+  const long = Math.max(safeSide(s.width), safeSide(s.height))
   const dpr = s.dpr > 0 && Number.isFinite(s.dpr) ? s.dpr : 1
-  let width = Math.round((device === 'hp' ? short : long) * dpr)
-  let height = Math.round((device === 'hp' ? long : short) * dpr)
+  const pinned = target?.x && target?.y && Number.isFinite(target.x) && Number.isFinite(target.y) && target.x > 0 && target.y > 0
+  const x = pinned ? Math.min(target.x!, target.y!) : short * dpr
+  const y = pinned ? Math.max(target.x!, target.y!) : long * dpr
+  let width = Math.max(1, Math.round(device === 'hp' ? x : y))
+  let height = Math.max(1, Math.round(device === 'hp' ? y : x))
   let capped = false
 
   const area = width * height
@@ -50,17 +61,13 @@ export function exportSize(s: ScreenInfo, device: Device): ExportSize {
     height = Math.floor(height * k)
     capped = true
   }
-  return { width, height, capped }
+  return { width: Math.max(1, width), height: Math.max(1, height), capped }
 }
 
-// Aspect (width / height) of the preview frame. On a phone the hp frame follows the real
-// screen, on a laptop it uses a common phone shape so the mockup still reads as a phone.
-export function previewAspect(s: ScreenInfo, device: Device): number {
-  const short = Math.min(s.width, s.height)
-  const long = Math.max(s.width, s.height)
-  const phone = isPhoneScreen(s)
-  if (device === 'hp') return phone ? short / long : 1 / REFERENCE_PHONE
-  return phone ? REFERENCE_DESKTOP : long / short
+// The artwork (inside its decorative frame) uses the exact export aspect.
+export function previewAspect(s: ScreenInfo, device: Device, target?: Pick<Params, 'x' | 'y'>): number {
+  const size = exportSize(s, device, target)
+  return size.width / size.height
 }
 
 export function readScreen(): ScreenInfo {

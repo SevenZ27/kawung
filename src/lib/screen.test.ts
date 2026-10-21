@@ -36,8 +36,26 @@ describe('previewAspect', () => {
     expect(previewAspect({ width: 393, height: 852, dpr: 3 }, 'hp')).toBeCloseTo(393 / 852)
   })
 
-  it('uses a phone shape on a laptop and the real ratio for desktop', () => {
-    expect(previewAspect({ width: 1440, height: 900, dpr: 2 }, 'hp')).toBeCloseTo(9 / 19.5)
+  it('uses the actual output ratio even when making a phone wallpaper on a laptop', () => {
+    expect(previewAspect({ width: 1440, height: 900, dpr: 2 }, 'hp')).toBeCloseTo(900 / 1440)
     expect(previewAspect({ width: 1440, height: 900, dpr: 2 }, 'desktop')).toBeCloseTo(1.6)
+  })
+
+  it('pins output dimensions across screens, DPR, and orientation changes', () => {
+    const target = { x: 1179, y: 2556 }
+    for (const screen of [{ width: 393, height: 852, dpr: 3 }, { width: 1440, height: 900, dpr: 2 }, { width: 852, height: 393, dpr: 1 }]) {
+      expect(exportSize(screen, 'hp', target)).toEqual({ width: 1179, height: 2556, capped: false })
+      expect(exportSize(screen, 'desktop', target)).toEqual({ width: 2556, height: 1179, capped: false })
+      expect(previewAspect(screen, 'hp', target)).toBe(1179 / 2556)
+    }
+  })
+
+  it('keeps preview and export identical after applying the area cap', () => {
+    const screen = { width: 393, height: 852, dpr: 3 }
+    const target = { x: 8000, y: 16000 }
+    const size = exportSize(screen, 'hp', target)
+    expect(size.capped).toBe(true)
+    expect(size.width * size.height).toBeLessThanOrEqual(MAX_CANVAS_AREA)
+    expect(previewAspect(screen, 'hp', target)).toBe(size.width / size.height)
   })
 })

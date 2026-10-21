@@ -12,6 +12,10 @@ function draw(ctx: MotifContext) {
   const shape = pick(rng, ['lens', 'oval'] as const)
   const corner = pick(rng, ['star', 'clover', 'diamond'] as const)
   const alternate = rng() < 0.5
+  // Preserve the 48-combination legacy generator for old links. New seeds use
+  // bounded continuous proportions without breaking rotational symmetry.
+  const petalScale = ctx.generation >= 2 ? 0.82 + rng() * 0.25 : 1
+  const frameScale = ctx.generation >= 2 ? 0.93 + rng() * 0.07 : 1
 
   const frames = new PathBuilder()
   const petals = new PathBuilder()
@@ -27,9 +31,9 @@ function draw(ctx: MotifContext) {
       const y = j * s
       if (ctx.inView(x, y, s)) {
         const turn = alternate && ((i + j) % 2 !== 0) ? 45 : 0
-        if (frame === 'circle') frames.circle(x, y, s * 0.44)
+        if (frame === 'circle') frames.circle(x, y, s * 0.44 * frameScale)
         else {
-          const r = s * 0.47
+          const r = s * 0.47 * frameScale
           frames.polygon([
             [x, y - r],
             [x + r, y],
@@ -39,10 +43,10 @@ function draw(ctx: MotifContext) {
         }
         for (let k = 0; k < count; k++) {
           const ang = turn + (k * 360) / count - 90
-          if (shape === 'lens') petals.lens(x, y, s * 0.07, s * 0.36, s * (count === 4 ? 0.075 : 0.05), ang)
+          if (shape === 'lens') petals.lens(x, y, s * 0.07, s * 0.36 * petalScale, s * (count === 4 ? 0.075 : 0.05), ang)
           else {
             const a = (ang * Math.PI) / 180
-            const len = s * 0.14
+            const len = s * 0.14 * petalScale
             petals.ellipse(x + Math.cos(a) * s * 0.215, y + Math.sin(a) * s * 0.215, len, s * (count === 4 ? 0.07 : 0.045), ang)
           }
           if (count === 4) {

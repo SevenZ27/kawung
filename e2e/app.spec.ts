@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test'
 import { PHONE, collectErrors, openSheetIfMobile, pickRadio, pngSize, wallpaperSvg } from './helpers'
 
-const SHOTS = 'docs/screenshots'
+const SHOTS = 'qa/current'
 
 test.describe('layout', () => {
   test('375 px: renders without console errors', async ({ browser }) => {
@@ -144,10 +144,14 @@ test('with motion: motif change fades the old wallpaper out', async ({ page }) =
   await expect(page.locator('.wallpaper-leaving')).toHaveCount(0, { timeout: 3000 })
 })
 
-test('no request leaves the site', async ({ page }) => {
+test('no application request leaves the site', async ({ page, baseURL }) => {
   const outside: string[] = []
+  const environmentHosts = (process.env.E2E_ENVIRONMENT_HOSTS || '').split(',').filter(Boolean)
   page.on('request', (req) => {
-    if (!req.url().startsWith('http://localhost:4174') && !req.url().startsWith('data:') && !req.url().startsWith('blob:')) outside.push(req.url())
+    if (req.url().startsWith('data:') || req.url().startsWith('blob:')) return
+    const url = new URL(req.url())
+    if (environmentHosts.includes(url.hostname)) return
+    if (url.origin !== new URL(baseURL!).origin) outside.push(req.url())
   })
   await page.goto('/?m=truntum&s=9')
   await page.waitForLoadState('networkidle')

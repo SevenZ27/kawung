@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-21",
+  "format": "KWP1 / AES-256-GCM",
+  "models": [
+    {
+      "id": "iphone",
+      "sourceSha256": "a4389b7ae5e3aa07ad63a4f5f0315567a5187313db41b37e690555b72d4e7241",
+      "resourceSha256": "b5970d2137cc652f23a1ed682aca0c5777eb2d15d63cee3f7636df3653e3d923",
+      "bytes": 594056,
+      "roundTripIdentical": true,
+      "tamperRejected": true
+    },
+    {
+      "id": "studio-display",
+      "sourceSha256": "021fcf287770288fbab98b1b80e7fcf7a683e56bc5424796c92fbd9f87774231",
+      "resourceSha256": "4078d7df8439e1f156c37ac752f10d10b61419d395a83fbaf7bf9e95fed8d4df",
+      "bytes": 451972,
+      "roundTripIdentical": true,
+      "tamperRejected": true
+    }
+  ]
+}

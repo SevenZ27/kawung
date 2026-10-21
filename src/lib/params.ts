@@ -1,6 +1,6 @@
 import { isHex6 } from './color'
 
-export const MOTIF_IDS = ['kawung', 'parang', 'truntum', 'ceplok'] as const
+export const MOTIF_IDS = ['kawung', 'parang', 'truntum', 'ceplok', 'nitik', 'jlamprang', 'megamendung', 'tambal', 'gringsing', 'semen'] as const
 export const PALETTE_IDS = ['sogan', 'nila', 'gading', 'bebas'] as const
 export const DEVICE_IDS = ['hp', 'desktop'] as const
 
@@ -17,6 +17,12 @@ export interface Params {
   w: number
   r: number
   v: Device
+  dim?: number
+  // Version 3 refines Nitik, Megamendung and Tambal; previous links retain their geometry.
+  g?: number
+  // Physical output dimensions, short side first. Omitted by legacy links.
+  x?: number
+  y?: number
 }
 
 export const LIMITS = {
@@ -24,6 +30,7 @@ export const LIMITS = {
   d: { min: 1, max: 10 },
   w: { min: 1, max: 10 },
   r: { min: 0, max: 179 },
+  dim: { min: -80, max: 80 },
 } as const
 
 export const DEFAULTS: Params = {
@@ -54,6 +61,9 @@ export function randomSeed(rand: () => number = Math.random): number {
 export function parseParams(search: string, seedIfMissing: number = DEFAULTS.s): Params {
   const q = new URLSearchParams(search)
   const c = (q.get('c') ?? '').replace('#', '').toLowerCase()
+  const dimensions = ['x', 'y'].map((key) => q.get(key))
+  const validSize = dimensions.every((value) => value !== null && /^\d+$/.test(value) && Number(value) >= 64 && Number(value) <= 16384)
+  const size = validSize ? { x: Math.min(...dimensions.map(Number)), y: Math.max(...dimensions.map(Number)) } : {}
   return {
     m: oneOf(q.get('m'), MOTIF_IDS, DEFAULTS.m),
     s: intIn(q.get('s'), LIMITS.s, seedIfMissing),
@@ -63,6 +73,9 @@ export function parseParams(search: string, seedIfMissing: number = DEFAULTS.s):
     w: intIn(q.get('w'), LIMITS.w, DEFAULTS.w),
     r: intIn(q.get('r'), LIMITS.r, DEFAULTS.r),
     v: oneOf(q.get('v'), DEVICE_IDS, DEFAULTS.v),
+    ...(q.has('dim') ? { dim: intIn(q.get('dim'), LIMITS.dim, 0) } : {}),
+    ...(['2', '3'].includes(q.get('g') ?? '') ? { g: Number(q.get('g')) } : {}),
+    ...size,
   }
 }
 
@@ -77,5 +90,11 @@ export function toSearch(p: Params): string {
   q.set('w', String(p.w))
   q.set('r', String(p.r))
   q.set('v', p.v)
+  if (p.dim) q.set('dim', String(p.dim))
+  if (p.g === 2 || p.g === 3) q.set('g', String(p.g))
+  if (p.x && p.y) {
+    q.set('x', String(p.x))
+    q.set('y', String(p.y))
+  }
   return `?${q.toString()}`
 }

@@ -1,0 +1,794 @@
+[
+  {
+    "name": "chrome",
+    "version": "155.0.8059.85",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "v": "hp",
+    "m": "nitik",
+    "screen": {
+      "x": 371.234375,
+      "y": 156.671875,
+      "width": 257.53125,
+      "height": 559.53125
+    },
+    "frame": {
+      "x": 365.0625,
+      "y": 150.5,
+      "width": 269.875,
+      "height": 571.875
+    },
+    "style": {
+      "shadow": "none",
+      "transform": "none",
+      "radius": "39.1323px"
+    },
+    "overflow": {
+      "x": 0,
+      "y": 0
+    },
+    "violations": [],
+    "errors": [],
+    "shot": "docs/screenshots/motif-revision/chrome-1440-hp-nitik.png"
+  },
+  {
+    "name": "chrome",
+    "version": "155.0.8059.85",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "v": "desktop",
+    "m": "nitik",
+    "screen": {
+      "x": 93.546875,
+      "y": 165.125,
+      "width": 812.90625,
+      "height": 457.265625
+    },
+    "frame": {
+      "x": 67.40625,
+      "y": 142.6875,
+      "width": 865.171875,
+      "height": 499.8125
+    },
+    "style": {
+      "shadow": "none",
+      "transform": "none",
+      "radius": "11.7903px"
+    },
+    "overflow": {
+      "x": 0,
+      "y": 0
+    },
+    "violations": [],
+    "errors": [],
+    "shot": "docs/screenshots/motif-revision/chrome-1440-desktop-nitik.png"
+  },
+  {
+    "name": "chrome",
+    "version": "155.0.8059.85",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "v": "hp",
+    "m": "megamendung",
+    "screen": {
+      "x": 371.234375,
+      "y": 156.671875,
+      "width": 257.53125,
+      "height": 559.53125
+    },
+    "frame": {
+      "x": 365.0625,
+      "y": 150.5,
+      "width": 269.875,
+      "height": 571.875
+    },
+    "style": {
+      "shadow": "none",
+      "transform": "none",
+      "radius": "39.1323px"
+    },
+    "overflow": {
+      "x": 0,
+      "y": 0
+    },
+    "violations": [],
+    "errors": [],
+    "shot": "docs/screenshots/motif-revision/chrome-1440-hp-megamendung.png"
+  },
+  {
+    "name": "chrome",
+    "version": "155.0.8059.85",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "v": "desktop",
+    "m": "megamendung",
+    "screen": {
+      "x": 93.546875,
+      "y": 165.125,
+      "width": 812.90625,
+      "height": 457.265625
+    },
+    "frame": {
+      "x": 78.921875,
+      "y": 150.5,
+      "width": 842.15625,
+      "height": 486.515625
+    },
+    "style": {
+      "shadow": "none",
+      "transform": "none",
+      "radius": "11.7903px"
+    },
+    "overflow": {
+      "x": 0,
+      "y": 0
+    },
+    "violations": [],
+    "errors": [],
+    "shot": "docs/screenshots/motif-revision/chrome-1440-desktop-megamendung.png"
+  },
+  {
+    "name": "chrome",
+    "version": "155.0.8059.85",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "v": "hp",
+    "m": "tambal",
+    "screen": {
+      "x": 371.234375,
+      "y": 156.671875,
+      "width": 257.53125,
+      "height": 559.53125
+    },
+    "frame": {
+      "x": 365.0625,
+      "y": 150.5,
+      "width": 269.875,
+      "height": 571.875
+    },
+    "style": {
+      "shadow": "none",
+      "transform": "none",
+      "radius": "39.1323px"
+    },
+    "overflow": {
+      "x": 0,
+      "y": 0
+    },
+    "violations": [],
+    "errors": [],
+    "shot": "docs/screenshots/motif-revision/chrome-1440-hp-tambal.png"
+  },
+  {
+    "name": "chrome",
+    "version": "155.0.8059.85",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "v": "desktop",
+    "m": "tambal",
+    "screen": {
+      "x": 93.546875,
+      "y": 165.125,
+      "width": 812.90625,
+      "height": 457.265625
+    },
+    "frame": {
+      "x": 78.921875,
+      "y": 150.5,
+      "width": 842.15625,
+      "height": 486.515625
+    },
+    "style": {
+      "shadow": "none",
+      "transform": "none",
+      "radius": "11.7903px"
+    },
+    "overflow": {
+      "x": 0,
+      "y": 0
+    },
+    "violations": [],
+    "errors": [],
+    "shot": "docs/screenshots/motif-revision/chrome-1440-desktop-tambal.png"
+  },
+  {
+    "name": "chrome",
+    "version": "155.0.8059.85",
+    "width": 390,
+    "height": 844,
+    "dpr": 3,
+    "v": "hp",
+    "m": "tambal",
+    "screen": {
+      "x": 106.65625,
+      "y": 122.234375,
+      "width": 176.6875,
+      "height": 383.90625
+    },
+    "frame": {
+      "x": 102.421875,
+      "y": 118,
+      "width": 185.15625,
+      "height": 392.375
+    },
+    "style": {
+      "shadow": "none",
+      "transform": "none",
+      "radius": "26.8494px"
+    },
+    "overflow": {
+      "x": 0,
+      "y": 0
+    },
+    "violations": [],
+    "errors": [],
+    "shot": "docs/screenshots/motif-revision/chrome-390-hp-tambal.png"
+  },
+  {
+    "name": "chrome",
+    "version": "155.0.8059.85",
+    "width": 390,
+    "height": 844,
+    "dpr": 3,
+    "v": "desktop",
+    "m": "tambal",
+    "screen": {
+      "x": 33.796875,
+      "y": 206.59375,
+      "width": 322.40625,
+      "height": 181.34375
+    },
+    "frame": {
+      "x": 28,
+      "y": 200.796875,
+      "width": 334,
+      "height": 192.9375
+    },
+    "style": {
+      "shadow": "none",
+      "transform": "none",
+      "radius": "4.676px"
+    },
+    "overflow": {
+      "x": 0,
+      "y": 0
+    },
+    "violations": [],
+    "errors": [],
+    "shot": "docs/screenshots/motif-revision/chrome-390-desktop-tambal.png"
+  },
+  {
+    "name": "chrome",
+    "version": "155.0.8059.85",
+    "width": 320,
+    "height": 568,
+    "dpr": 2,
+    "v": "hp",
+    "m": "tambal",
+    "screen": {
+      "x": 101.8125,
+      "y": 112.78125,
+      "width": 116.359375,
+      "height": 252.8125
+    },
+    "frame": {
+      "x": 99.03125,
+      "y": 110,
+      "width": 121.921875,
+      "height": 258.375
+    },
+    "style": {
+      "shadow": "none",
+      "transform": "none",
+      "radius": "17.6801px"
+    },
+    "overflow": {
+      "x": 0,
+      "y": 0
+    },
+    "violations": [],
+    "errors": [],
+    "shot": "docs/screenshots/motif-revision/chrome-320-hp-tambal.png"
+  },
+  {
+    "name": "chrome",
+    "version": "155.0.8059.85",
+    "width": 320,
+    "height": 568,
+    "dpr": 2,
+    "v": "desktop",
+    "m": "tambal",
+    "screen": {
+      "x": 32.578125,
+      "y": 154.140625,
+      "width": 254.84375,
+      "height": 143.34375
+    },
+    "frame": {
+      "x": 28,
+      "y": 149.5625,
+      "width": 264,
+      "height": 152.5
+    },
+    "style": {
+      "shadow": "none",
+      "transform": "none",
+      "radius": "3.696px"
+    },
+    "overflow": {
+      "x": 0,
+      "y": 0
+    },
+    "violations": [],
+    "errors": [],
+    "shot": "docs/screenshots/motif-revision/chrome-320-desktop-tambal.png"
+  },
+  {
+    "name": "chrome",
+    "version": "155.0.8059.85",
+    "width": 812,
+    "height": 375,
+    "dpr": 2,
+    "v": "hp",
+    "m": "tambal",
+    "screen": {
+      "x": 206.109375,
+      "y": 103.796875,
+      "width": 74.96875,
+      "height": 162.90625
+    },
+    "frame": {
+      "x": 204.3125,
+      "y": 102,
+      "width": 78.5625,
+      "height": 166.5
+    },
+    "style": {
+      "shadow": "none",
+      "transform": "none",
+      "radius": "11.3933px"
+    },
+    "overflow": {
+      "x": 0,
+      "y": 0
+    },
+    "violations": [],
+    "errors": [],
+    "shot": "docs/screenshots/motif-revision/chrome-812-hp-tambal.png"
+  },
+  {
+    "name": "chrome",
+    "version": "155.0.8059.85",
+    "width": 812,
+    "height": 375,
+    "dpr": 2,
+    "v": "desktop",
+    "m": "tambal",
+    "screen": {
+      "x": 125.25,
+      "y": 106.25,
+      "width": 236.6875,
+      "height": 133.140625
+    },
+    "frame": {
+      "x": 121,
+      "y": 102,
+      "width": 245.1875,
+      "height": 141.640625
+    },
+    "style": {
+      "shadow": "none",
+      "transform": "none",
+      "radius": "3.43272px"
+    },
+    "overflow": {
+      "x": 0,
+      "y": 0
+    },
+    "violations": [],
+    "errors": [],
+    "shot": "docs/screenshots/motif-revision/chrome-812-desktop-tambal.png"
+  },
+  {
+    "name": "webkit",
+    "version": "26.6",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "v": "hp",
+    "m": "nitik",
+    "screen": {
+      "x": 371.109375,
+      "y": 156.171875,
+      "width": 257.765625,
+      "height": 560.03125
+    },
+    "frame": {
+      "x": 364.9375,
+      "y": 150,
+      "width": 270.109375,
+      "height": 572.375
+    },
+    "style": {
+      "shadow": "none",
+      "transform": "none",
+      "radius": "39.166496px"
+    },
+    "overflow": {
+      "x": 0,
+      "y": 0
+    },
+    "violations": [],
+    "errors": [],
+    "shot": "docs/screenshots/motif-revision/webkit-1440-hp-nitik.png"
+  },
+  {
+    "name": "webkit",
+    "version": "26.6",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "v": "desktop",
+    "m": "nitik",
+    "screen": {
+      "x": 93.1875,
+      "y": 164.640625,
+      "width": 813.609375,
+      "height": 457.65625
+    },
+    "frame": {
+      "x": 78.546875,
+      "y": 150,
+      "width": 842.890625,
+      "height": 486.9375
+    },
+    "style": {
+      "shadow": "none",
+      "transform": "none",
+      "radius": "11.800607px"
+    },
+    "overflow": {
+      "x": 0,
+      "y": 0
+    },
+    "violations": [],
+    "errors": [],
+    "shot": "docs/screenshots/motif-revision/webkit-1440-desktop-nitik.png"
+  },
+  {
+    "name": "webkit",
+    "version": "26.6",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "v": "hp",
+    "m": "megamendung",
+    "screen": {
+      "x": 371.109375,
+      "y": 156.171875,
+      "width": 257.765625,
+      "height": 560.03125
+    },
+    "frame": {
+      "x": 364.9375,
+      "y": 150,
+      "width": 270.109375,
+      "height": 572.375
+    },
+    "style": {
+      "shadow": "none",
+      "transform": "none",
+      "radius": "39.166496px"
+    },
+    "overflow": {
+      "x": 0,
+      "y": 0
+    },
+    "violations": [],
+    "errors": [],
+    "shot": "docs/screenshots/motif-revision/webkit-1440-hp-megamendung.png"
+  },
+  {
+    "name": "webkit",
+    "version": "26.6",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "v": "desktop",
+    "m": "megamendung",
+    "screen": {
+      "x": 93.1875,
+      "y": 164.640625,
+      "width": 813.609375,
+      "height": 457.65625
+    },
+    "frame": {
+      "x": 78.546875,
+      "y": 150,
+      "width": 842.890625,
+      "height": 486.9375
+    },
+    "style": {
+      "shadow": "none",
+      "transform": "none",
+      "radius": "11.800607px"
+    },
+    "overflow": {
+      "x": 0,
+      "y": 0
+    },
+    "violations": [],
+    "errors": [],
+    "shot": "docs/screenshots/motif-revision/webkit-1440-desktop-megamendung.png"
+  },
+  {
+    "name": "webkit",
+    "version": "26.6",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "v": "hp",
+    "m": "tambal",
+    "screen": {
+      "x": 371.109375,
+      "y": 156.171875,
+      "width": 257.765625,
+      "height": 560.03125
+    },
+    "frame": {
+      "x": 364.9375,
+      "y": 150,
+      "width": 270.109375,
+      "height": 572.375
+    },
+    "style": {
+      "shadow": "none",
+      "transform": "none",
+      "radius": "39.166496px"
+    },
+    "overflow": {
+      "x": 0,
+      "y": 0
+    },
+    "violations": [],
+    "errors": [],
+    "shot": "docs/screenshots/motif-revision/webkit-1440-hp-tambal.png"
+  },
+  {
+    "name": "webkit",
+    "version": "26.6",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "v": "desktop",
+    "m": "tambal",
+    "screen": {
+      "x": 93.1875,
+      "y": 164.640625,
+      "width": 813.609375,
+      "height": 457.65625
+    },
+    "frame": {
+      "x": 78.546875,
+      "y": 150,
+      "width": 842.890625,
+      "height": 486.9375
+    },
+    "style": {
+      "shadow": "none",
+      "transform": "none",
+      "radius": "11.800607px"
+    },
+    "overflow": {
+      "x": 0,
+      "y": 0
+    },
+    "violations": [],
+    "errors": [],
+    "shot": "docs/screenshots/motif-revision/webkit-1440-desktop-tambal.png"
+  },
+  {
+    "name": "webkit",
+    "version": "26.6",
+    "width": 390,
+    "height": 844,
+    "dpr": 3,
+    "v": "hp",
+    "m": "tambal",
+    "screen": {
+      "x": 106.65625,
+      "y": 122.234375,
+      "width": 176.6875,
+      "height": 383.90625
+    },
+    "frame": {
+      "x": 102.421875,
+      "y": 118,
+      "width": 185.15625,
+      "height": 392.375
+    },
+    "style": {
+      "shadow": "none",
+      "transform": "none",
+      "radius": "26.849449px"
+    },
+    "overflow": {
+      "x": 0,
+      "y": 0
+    },
+    "violations": [],
+    "errors": [],
+    "shot": "docs/screenshots/motif-revision/webkit-390-hp-tambal.png"
+  },
+  {
+    "name": "webkit",
+    "version": "26.6",
+    "width": 390,
+    "height": 844,
+    "dpr": 3,
+    "v": "desktop",
+    "m": "tambal",
+    "screen": {
+      "x": 33.796875,
+      "y": 206.59375,
+      "width": 322.40625,
+      "height": 181.34375
+    },
+    "frame": {
+      "x": 28,
+      "y": 200.796875,
+      "width": 334,
+      "height": 192.9375
+    },
+    "style": {
+      "shadow": "none",
+      "transform": "none",
+      "radius": "4.676px"
+    },
+    "overflow": {
+      "x": 0,
+      "y": 0
+    },
+    "violations": [],
+    "errors": [],
+    "shot": "docs/screenshots/motif-revision/webkit-390-desktop-tambal.png"
+  },
+  {
+    "name": "webkit",
+    "version": "26.6",
+    "width": 320,
+    "height": 568,
+    "dpr": 2,
+    "v": "hp",
+    "m": "tambal",
+    "screen": {
+      "x": 101.8125,
+      "y": 112.78125,
+      "width": 116.359375,
+      "height": 252.8125
+    },
+    "frame": {
+      "x": 99.03125,
+      "y": 110,
+      "width": 121.921875,
+      "height": 258.375
+    },
+    "style": {
+      "shadow": "none",
+      "transform": "none",
+      "radius": "17.680094px"
+    },
+    "overflow": {
+      "x": 0,
+      "y": 0
+    },
+    "violations": [],
+    "errors": [],
+    "shot": "docs/screenshots/motif-revision/webkit-320-hp-tambal.png"
+  },
+  {
+    "name": "webkit",
+    "version": "26.6",
+    "width": 320,
+    "height": 568,
+    "dpr": 2,
+    "v": "desktop",
+    "m": "tambal",
+    "screen": {
+      "x": 32.578125,
+      "y": 154.140625,
+      "width": 254.84375,
+      "height": 143.34375
+    },
+    "frame": {
+      "x": 28,
+      "y": 149.5625,
+      "width": 264,
+      "height": 152.5
+    },
+    "style": {
+      "shadow": "none",
+      "transform": "none",
+      "radius": "3.696px"
+    },
+    "overflow": {
+      "x": 0,
+      "y": 0
+    },
+    "violations": [],
+    "errors": [],
+    "shot": "docs/screenshots/motif-revision/webkit-320-desktop-tambal.png"
+  },
+  {
+    "name": "webkit",
+    "version": "26.6",
+    "width": 812,
+    "height": 375,
+    "dpr": 2,
+    "v": "hp",
+    "m": "tambal",
+    "screen": {
+      "x": 206.109375,
+      "y": 103.796875,
+      "width": 74.96875,
+      "height": 162.90625
+    },
+    "frame": {
+      "x": 204.3125,
+      "y": 102,
+      "width": 78.5625,
+      "height": 166.5
+    },
+    "style": {
+      "shadow": "none",
+      "transform": "none",
+      "radius": "11.393268px"
+    },
+    "overflow": {
+      "x": 0,
+      "y": 0
+    },
+    "violations": [],
+    "errors": [],
+    "shot": "docs/screenshots/motif-revision/webkit-812-hp-tambal.png"
+  },
+  {
+    "name": "webkit",
+    "version": "26.6",
+    "width": 812,
+    "height": 375,
+    "dpr": 2,
+    "v": "desktop",
+    "m": "tambal",
+    "screen": {
+      "x": 125.25,
+      "y": 106.25,
+      "width": 236.6875,
+      "height": 133.140625
+    },
+    "frame": {
+      "x": 121,
+      "y": 102,
+      "width": 245.1875,
+      "height": 141.640625
+    },
+    "style": {
+      "shadow": "none",
+      "transform": "none",
+      "radius": "3.432716px"
+    },
+    "overflow": {
+      "x": 0,
+      "y": 0
+    },
+    "violations": [],
+    "errors": [],
+    "shot": "docs/screenshots/motif-revision/webkit-812-desktop-tambal.png"
+  }
+]

@@ -1,10 +1,10 @@
-import { memo, useId, useMemo, useState, type ReactNode } from 'react'
+import { memo, useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react'
 import { MOTIF_INFO } from '../lib/motifs'
 import { PALETTES, PALETTE_LABELS, customPalette } from '../lib/palettes'
 import { LIMITS, MOTIF_IDS, PALETTE_IDS, randomSeed, toSearch, type Device, type MotifId, type Params } from '../lib/params'
 import { sceneToSvg } from '../lib/render'
 import { buildScene } from '../lib/scene'
-import { exportSize, isPhoneScreen, type ScreenInfo } from '../lib/screen'
+import { exportSize, type ScreenInfo } from '../lib/screen'
 
 type Update = (patch: Partial<Params>) => void
 
@@ -29,12 +29,12 @@ export function MotifPicker({ params, update }: { params: Params; update: Update
   const thumbBase = useMemo(
     () => ({ ...params, d: Math.min(params.d, 4), r: 0 }),
     // thumbnails follow palette, seed and weight, not rotation
-    [params.p, params.c, params.s, params.w, Math.min(params.d, 4)],
+    [params.p, params.c, params.s, params.w, params.dim, params.g, Math.min(params.d, 4)],
   )
   return (
     <fieldset>
       <legend className="sr-only">Pilih motif</legend>
-      <div className="grid grid-cols-4 gap-2.5 lg:gap-3">
+      <div className="motif-grid">
         {MOTIF_IDS.map((m) => {
           const active = params.m === m
           return (
@@ -44,11 +44,11 @@ export function MotifPicker({ params, update }: { params: Params; update: Update
                 name="motif"
                 value={m}
                 checked={active}
-                onChange={() => update({ m })}
+                onChange={() => update({ m, g: 3 })}
                 className="peer sr-only"
               />
               <span
-                className={`block aspect-square overflow-hidden rounded-[10px] ring-offset-2 ring-offset-paper transition-[box-shadow,transform] duration-300 ease-(--ease-soft) peer-focus-visible:outline-2 peer-focus-visible:outline-offset-4 peer-focus-visible:outline-nila ${
+                className={`motif-thumb mx-auto block aspect-square w-full overflow-hidden rounded-[10px] ring-offset-2 ring-offset-paper transition-[box-shadow,transform] duration-300 ease-(--ease-soft) peer-focus-visible:outline-2 peer-focus-visible:outline-offset-4 peer-focus-visible:outline-nila ${
                   active ? 'ring-[1.5px] ring-ink' : 'ring-1 ring-hair group-hover:-translate-y-0.5'
                 }`}
               >
@@ -77,20 +77,7 @@ export function MotifNote({ m }: { m: MotifId }) {
       {info.note ? (
         <>
           <p className="mt-1 text-[13.5px] leading-relaxed text-ink-soft">{info.note}</p>
-          {info.source && (
-            <a
-              href={info.source.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 inline-flex items-center gap-1 text-[12.5px] font-medium text-nila underline decoration-nila/30 underline-offset-[3px] hover:decoration-nila"
-            >
-              Sumber: {info.source.label}
-              <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
-                <path d="M3 1h6v6M9 1 1.5 8.5" fill="none" stroke="currentColor" strokeWidth="1.3" />
-              </svg>
-              <span className="sr-only">(buka di tab baru)</span>
-            </a>
-          )}
+
         </>
       ) : null}
       <p className="mt-2.5 border-t border-hair pt-2.5 text-[12px] leading-relaxed text-ink-soft">
@@ -151,7 +138,7 @@ export function PalettePicker({ params, update }: { params: Params; update: Upda
                 type="color"
                 value={`#${params.c}`}
                 onChange={(e) => update({ p: 'bebas', c: e.target.value.slice(1).toLowerCase() })}
-                className="h-8 w-11 cursor-pointer rounded-md border border-hair bg-transparent p-0.5"
+                className="h-11 w-11 cursor-pointer rounded-md border border-hair bg-transparent p-0.5"
               />
             </span>
           </div>
@@ -203,12 +190,12 @@ export function SeedField({ params, update }: { params: Params; update: Update }
   const id = useId()
   const [spin, setSpin] = useState(0)
   return (
-    <div className="flex items-end gap-3 pt-2">
-      <div className="flex-1">
+    <div className="seed-field grid grid-cols-[1fr_auto] items-end gap-x-3 gap-y-2 pt-2">
+      <div className="col-span-2">
         <label htmlFor={id} className="text-[13.5px] text-ink">
           Seed
         </label>
-        <p className="text-[12px] text-ink-soft">Angka yang sama, motif yang sama.</p>
+        <p className="text-[12px] text-ink-soft">Mengulang variasi dengan pengaturan yang sama.</p>
       </div>
       <input
         id={id}
@@ -219,17 +206,17 @@ export function SeedField({ params, update }: { params: Params; update: Update }
         value={params.s}
         onChange={(e) => {
           const n = Math.floor(Number(e.target.value))
-          if (Number.isFinite(n)) update({ s: Math.min(LIMITS.s.max, Math.max(LIMITS.s.min, n)) })
+          if (Number.isFinite(n)) update({ s: Math.min(LIMITS.s.max, Math.max(LIMITS.s.min, n)), g: 3 })
         }}
-        className="h-10 w-[6.5rem] rounded-lg border border-hair bg-white/50 px-3 text-right font-mono text-[14px] tabular-nums text-ink"
+        className="h-11 min-w-0 w-full rounded-lg border border-hair bg-white/50 px-3 text-right font-mono text-[16px] tabular-nums text-ink"
       />
       <button
         type="button"
         onClick={() => {
-          update({ s: randomSeed() })
+          update({ s: randomSeed(), g: 3 })
           setSpin((k) => k + 1)
         }}
-        className="inline-flex h-10 items-center gap-2 rounded-lg bg-ink px-3.5 text-[13.5px] font-medium text-paper transition-[background-color,transform] duration-200 hover:bg-[#3a2d22] active:scale-[0.97]"
+        className="inline-flex h-11 items-center gap-2 rounded-lg bg-ink px-3.5 text-[13.5px] font-medium text-paper transition-[background-color,transform] duration-200 hover:bg-[#3a2d22] active:scale-[0.97]"
       >
         <svg
           width="15"
@@ -252,23 +239,42 @@ export function SeedField({ params, update }: { params: Params; update: Update }
 
 const px = (n: number) => new Intl.NumberFormat('id-ID').format(n)
 
-export function SaveSection({ params, screen, onDownload, busy }: { params: Params; screen: ScreenInfo; onDownload: (d: Device) => void; busy: Device | null }) {
-  const [copied, setCopied] = useState(false)
+export function SaveSection({ params, screen, update, onDownload, busy }: { params: Params; screen: ScreenInfo; update: Update; onDownload: (d: Device) => void; busy: Device | null }) {
+  const [copyState, setCopyState] = useState<{ href: string; status: 'pending' | 'success' | 'failed' } | null>(null)
+  const copyRequest = useRef(0)
+  const copyTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const linkId = useId()
-  const phone = isPhoneScreen(screen)
-  const sizes = { hp: exportSize(screen, 'hp'), desktop: exportSize(screen, 'desktop') }
+  const sizes = { hp: exportSize(screen, 'hp', params), desktop: exportSize(screen, 'desktop', params) }
   const href = `${window.location.origin}${window.location.pathname}${toSearch(params)}`
+  const latestHref = useRef(href)
+  latestHref.current = href
+  const status = copyState?.href === href ? copyState.status : null
+
+  useEffect(() => () => { copyRequest.current++; if (copyTimer.current) clearTimeout(copyTimer.current) }, [])
 
   const copy = async () => {
+    const request = ++copyRequest.current
+    if (copyTimer.current) clearTimeout(copyTimer.current)
+    setCopyState({ href, status: 'pending' })
+    let success = false
     try {
       await navigator.clipboard.writeText(href)
+      success = true
     } catch {
-      const input = document.getElementById(linkId) as HTMLInputElement | null
-      input?.select()
-      document.execCommand?.('copy')
+      // Do not copy a newer input value when an older clipboard request resolves.
+      if (request !== copyRequest.current || latestHref.current !== href) return
+      try {
+        const input = document.getElementById(linkId) as HTMLInputElement | null
+        const previous = document.activeElement as HTMLElement | null
+        input?.focus()
+        input?.select()
+        success = !!input && document.execCommand?.('copy') === true
+        if (success) previous?.focus()
+      } catch { success = false }
     }
-    setCopied(true)
-    window.setTimeout(() => setCopied(false), 2200)
+    if (request !== copyRequest.current || latestHref.current !== href) return
+    setCopyState({ href, status: success ? 'success' : 'failed' })
+    if (success) copyTimer.current = setTimeout(() => setCopyState(null), 2200)
   }
 
   const order: Device[] = params.v === 'hp' ? ['hp', 'desktop'] : ['desktop', 'hp']
@@ -305,10 +311,20 @@ export function SaveSection({ params, screen, onDownload, busy }: { params: Para
           )
         })}
       </div>
-      <p className="mt-3 text-[12.5px] leading-relaxed text-ink-soft">
-        Ukurannya dihitung dari layar yang lagi kamu pakai (lebar layar x devicePixelRatio).
-        {!phone && ' Biar pas di HP, salin link di bawah lalu buka dan unduh dari HP kamu.'}
-      </p>
+      <p className="mt-3 text-[12.5px] leading-relaxed text-ink-soft">Ukuran tersimpan di link. Preview mengikuti komposisi PNG; bingkai, tanggal, dan jam tidak ikut diunduh.</p>
+      <div className="mt-4">
+        <label htmlFor="output-preset" className="block text-[13px] font-medium">Ukuran wallpaper</label>
+        <select id="output-preset" className="mt-2 min-h-11 w-full rounded-lg border border-hair bg-paper px-3 text-[16px]" value={params.x === 1320 && params.y === 2868 ? 'iphone' : params.x === 2880 && params.y === 5120 ? 'studio' : 'current'} onChange={e => {
+          if (e.target.value === 'iphone') update({ x: 1320, y: 2868, v: 'hp' })
+          if (e.target.value === 'studio') update({ x: 2880, y: 5120, v: 'desktop' })
+        }}>
+          <option value="current" disabled>Ukuran tersimpan</option>
+          <option value="iphone">iPhone 18 Pro Max · 1320 × 2868</option>
+          <option value="studio">Studio Display 5K · 5120 × 2880</option>
+        </select>
+      </div>
+      <button type="button" onClick={() => { const size = exportSize(screen, 'hp'); update({ x: size.width, y: size.height }) }} className="mt-2 min-h-11 rounded-lg px-2 text-left text-[13px] font-medium text-nila underline underline-offset-4">Gunakan ukuran layar ini</button>
+      <p className="mt-3 text-[12.5px] leading-relaxed text-ink-soft">Estimasi memakai persentil ke-10 (P10) area di belakang jam: 90% sampel memiliki kontras setidaknya sebesar angka itu. Ini bukan uji baca manusia atau jaminan tampilan jam di perangkatmu.</p>
 
       <div className="mt-5">
         <label htmlFor={linkId} className="text-[13.5px] text-ink">
@@ -320,19 +336,18 @@ export function SaveSection({ params, screen, onDownload, busy }: { params: Para
             readOnly
             value={href}
             onFocus={(e) => e.currentTarget.select()}
-            className="h-10 min-w-0 flex-1 rounded-lg border border-hair bg-white/50 px-3 font-mono text-[12px] text-ink-soft"
+            className="h-11 min-w-0 flex-1 rounded-lg border border-hair bg-white/50 px-3 text-[16px] text-ink-soft"
           />
           <button
             type="button"
             onClick={copy}
-            className="h-10 shrink-0 rounded-lg px-3.5 text-[13.5px] font-medium text-ink shadow-[inset_0_0_0_1px_var(--color-hair)] transition-colors hover:bg-paper-deep"
+            disabled={status === 'pending'}
+            className="h-11 shrink-0 rounded-lg px-3.5 text-[13.5px] font-medium text-ink shadow-[inset_0_0_0_1px_var(--color-hair)] transition-colors hover:bg-paper-deep disabled:cursor-progress"
           >
-            {copied ? 'Tersalin' : 'Salin'}
+            {status === 'pending' ? 'Menyalin…' : status === 'success' ? 'Tersalin' : 'Salin'}
           </button>
         </div>
-        <p className="sr-only" role="status">
-          {copied ? 'Link tersalin' : ''}
-        </p>
+        <p className={status === 'failed' ? 'mt-2 text-[13px] leading-relaxed text-ink-soft' : 'sr-only'} role="status">{status === 'failed' ? 'Belum tersalin. Pilih link di atas, lalu salin lewat menu perangkat atau Ctrl/Cmd+C.' : status === 'success' ? 'Link tersalin' : ''}</p>
       </div>
     </div>
   )

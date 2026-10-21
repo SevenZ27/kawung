@@ -1,0 +1,60 @@
+{
+  "stats": {
+    "startTime": "2026-10-21T04:09:42.641Z",
+    "duration": 25444.993000000002,
+    "expected": 12,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "name": "shared output survives a different screen and an orientation change",
+      "ok": true
+    },
+    {
+      "name": "kawung: preview artwork and both PNG orientations share the same composition",
+      "ok": true
+    },
+    {
+      "name": "parang: preview artwork and both PNG orientations share the same composition",
+      "ok": true
+    },
+    {
+      "name": "truntum: preview artwork and both PNG orientations share the same composition",
+      "ok": true
+    },
+    {
+      "name": "ceplok: preview artwork and both PNG orientations share the same composition",
+      "ok": true
+    },
+    {
+      "name": "mobile modal contains focus, closes with Escape and restores its trigger",
+      "ok": true
+    },
+    {
+      "name": "tablet labels stay visible and landscape keeps a usable preview",
+      "ok": true
+    },
+    {
+      "name": "clipboard denied reports failure and leaves a selectable URL",
+      "ok": true
+    },
+    {
+      "name": "clipboard success is verified, and stale success clears after settings change",
+      "ok": true
+    },
+    {
+      "name": "legacy clipboard fallback only reports success when the browser accepts it",
+      "ok": true
+    },
+    {
+      "name": "a pending clipboard request cannot announce success for a newer link",
+      "ok": true
+    },
+    {
+      "name": "failed PNG export reports an error and can be retried",
+      "ok": true
+    }
+  ]
+}

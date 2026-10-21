@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.audit/
+qa/
+test-results/
+playwright-report/
+DRAFT/
+.vercel/
+.env*
+# Third-party device meshes are licensed for incorporated use, not MIT/source redistribution.
+public/models/*.glb
+qa-*.mjs
+.device-assets/
+
+.vercel
+.env*

@@ -25,6 +25,10 @@
   body {
     min-height: 100dvh;
   }
+  html, body, #root {
+    height: 100%;
+    overflow: hidden;
+  }
   ::selection {
     background: rgb(139 90 43 / 0.25);
   }
@@ -59,19 +63,15 @@
   height: 100%;
 }
 .wallpaper-leaving {
-  animation: leave 520ms var(--ease-soft) forwards;
+  animation: leave 320ms var(--ease-soft) forwards;
   pointer-events: none;
 }
 @keyframes leave {
   from {
     opacity: 1;
-    filter: blur(0);
-    transform: scale(1);
   }
   to {
     opacity: 0;
-    filter: blur(3px);
-    transform: scale(1.025);
   }
 }
 
@@ -118,7 +118,7 @@
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 28px;
+  height: 44px;
   background: transparent;
   cursor: pointer;
   --fill: 50%;
@@ -159,8 +159,68 @@
   outline-offset: 2px;
 }
 
-.sheet {
-  transition: transform 420ms var(--ease-soft);
+.app-shell {
+  --peek: 184px;
+  height: 100dvh;
+  overflow: hidden;
+}
+.preview-stage {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  flex-direction: column;
+  padding-bottom: calc(var(--peek) + env(safe-area-inset-bottom));
+}
+.settings-panel {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  height: calc(var(--peek) + env(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom);
+  border-radius: 22px 22px 0 0;
+  box-shadow: 0 -1px 0 var(--color-hair), 0 -18px 50px -20px rgb(43 33 24 / 0.25);
+  overflow: hidden;
+  contain: layout;
+  transition: height 340ms var(--ease-soft), border-radius 340ms var(--ease-soft);
+}
+.settings-backdrop { opacity: 0; pointer-events: none; transition: opacity 260ms var(--ease-soft); }
+.settings-backdrop[data-open='true'] { opacity: 1; pointer-events: auto; }
+.app-shell[data-wide='false'] .settings-panel[data-expanded='true'] #panel-body { animation: panel-open 260ms var(--ease-soft) both; }
+.app-shell[data-wide='false'] .settings-panel[data-expanded='false'] #panel-body { animation: panel-close 260ms var(--ease-soft) both; }
+@keyframes panel-open { from { opacity: 0; } to { opacity: 1; } }
+@keyframes panel-close { from { opacity: 0; } to { opacity: 1; } }
+.settings-panel[data-expanded='true'] { height: min(90dvh, 960px); }
+.motif-thumb { max-width: 72px; }
+.app-shell[data-wide='true'] {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 440px);
+}
+.app-shell[data-wide='true'] .preview-stage { padding-bottom: 0; }
+.app-shell[data-wide='true'] .settings-panel {
+  position: relative;
+  inset: auto;
+  z-index: auto;
+  min-height: 0;
+  height: 100%;
+  border-radius: 0;
+  border-left: 1px solid var(--color-hair);
+  box-shadow: none;
+}
+.app-shell[data-wide='true'] .motif-thumb { max-width: none; }
+@media (max-width: 1279px) {
+  .app-shell[data-wide='true'] .stage-tagline { display: none; }
+}
+@media (min-width: 700px) and (max-height: 500px) {
+  .app-shell[data-wide='true'] { grid-template-columns: minmax(0, 1fr) minmax(300px, 40%); }
+  .stage-header { padding: 12px 20px 0; }
+  .stage-content { padding: 10px 20px 12px; gap: 8px; }
+  .stage-caption { gap: 2px; }
+  .stage-header h1 { font-size: 26px; }
+  .settings-panel #panel-body > section:first-child { padding-top: 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -172,4 +232,57 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Ten motifs: a horizontal strip in the collapsed sheet, a full gallery when open. */
+.motif-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px 12px; }
+.motif-grid label { min-width: 0; }
+.motif-grid .motif-thumb { max-width: 96px; }
+.app-shell[data-wide='false'] .settings-panel[data-expanded='false'] .motif-grid {
+  display: flex; gap: 12px; overflow-x: auto; overscroll-behavior-x: contain;
+  padding: 5px 3px 8px; scroll-snap-type: x proximity;
+}
+.app-shell[data-wide='false'] .settings-panel[data-expanded='false'] .motif-grid label {
+  flex: 0 0 72px; scroll-snap-align: center;
+}
+#panel-body { scrollbar-color: #b6a896 transparent; scrollbar-width: thin; }
+.composition-artboard { background: #111113; outline: 1px solid #6b6d70; flex-shrink: 0; }
+.front-iphone { outline-color: #663449; }
+.front-island { position: absolute; top: 2cqh; left: 36.5%; width: 27%; height: 3.6cqh; border-radius: 99px; background: #080809; }
+.front-camera { position: absolute; left: 50%; transform: translateX(-50%); border-radius: 50%; background: #282a2d; }
+.front-stand { position: absolute; top: 100%; left: 36%; width: 28%; }
+.front-neck { height: 90%; width: 42%; margin: 0 auto; background: #c4c6c8; clip-path: polygon(8% 0,92% 0,100% 100%,0 100%); }
+.front-foot { position: absolute; bottom: 0; width: 100%; height: 12%; min-height: 2px; background: #b9bcbe; border-radius: 2px; }
+.preview-surface { opacity: 1; transition: opacity 240ms var(--ease-soft); }
+.preview-surface[data-leaving='true'] { opacity: 0; transition-duration: 140ms; pointer-events: none; }
+.device-3d-host canvas { opacity: 0; transition: opacity 220ms var(--ease-soft); }
+.device-3d-host[data-ready='true'] canvas { opacity: 1; }
+
+.preview-mode { display:flex; justify-content:center; gap:4px; flex-shrink:0; }
+.preview-mode button { min-height:44px; padding:6px 12px; font-size:12px; color:var(--color-ink-soft); border-radius:8px; }
+.preview-mode button[aria-pressed='true'] { background:var(--color-paper-deep); color:var(--color-ink); font-weight:600; }
+.device-3d-wrap { position:absolute; inset:0; display:flex; flex-direction:column; }
+.device-3d-host { position:relative; flex:1; min-height:0; }
+.device-3d-host canvas { display:block; width:100%; height:100%; touch-action:none; cursor:grab; }
+.device-3d-host canvas:active { cursor:grabbing; }
+.model-loading { position:absolute; inset:0; display:grid; place-items:center; font-size:13px; pointer-events:none; }
+.device-3d-host[data-ready='true'] .model-loading { display:none; }
+.device-view-controls { display:flex; justify-content:center; gap:4px; }
+.device-view-controls button { display:grid; place-items:center; min-width:44px; min-height:44px; padding:0 9px; border-radius:8px; font-size:12px; color:var(--color-ink-soft); }
+.device-view-controls button:hover { background:var(--color-paper-deep); }
+.device-hint { text-align:center; font-size:11px; line-height:1.4; color:var(--color-ink-soft); margin-top:2px; }
+@media(max-height:600px) { .device-hint { display:none; } }
+@media(max-height:600px) { .preview-mode button,.device-view-controls button { font-size:11px; } }
+
+/* On short phones, keep the artwork usable; the full motif gallery opens with
+   the existing sheet handle instead of consuming half of the preview height. */
+@media(max-width:699px) and (max-height:650px) {
+  .app-shell { --peek:60px; }
+  .settings-panel[data-expanded='false'] #panel-body { display:none; }
+  .stage-content { padding-top:8px; gap:8px; }
+  .stage-caption { gap:3px; }
+}
+@media(min-width:700px) and (max-height:500px) {
+  .stage-caption [role='status'] p { display:none; }
+  .stage-content { padding-top:4px; padding-bottom:4px; gap:4px; }
 }

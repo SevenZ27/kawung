@@ -24,8 +24,30 @@ The pattern is drawn around the centre of the screen and rotated as one group. C
 
 ## Export
 
-`exportSize(screen, device)` sorts the screen sides, multiplies by `devicePixelRatio`, rounds, and scales down when the area passes 16,777,216 pixels or a side passes 16,384. The canvas renderer uses the same path strings through `Path2D`.
+A blank new visit starts at the native iPhone size. A legacy link without dimensions uses `exportSize(screen, device)` to initialize output from screen size × devicePixelRatio. The URL stores short side `x` and long side `y`; subsequent rendering uses `exportSize(screen, device, params)`, which prioritizes these pinned dimensions. Preview aspect is derived from the same final output size. The preview frame reserves space outside the artwork so its bezel does not change the artwork aspect. The phone mask rounds the screen corners and overlays an island; the exported PNG keeps the full rectangular artwork. Both renderers use the same path strings; antialiasing can differ.
+
+The app caps output at 16,777,216 pixels and 16,384 pixels per side. These are conservative app limits, not a universal statement about Safari. Missing, partial, or invalid URL dimensions fall back to screen initialization. “Gunakan ukuran layar ini” updates pinned dimensions explicitly.
 
 ## Clock contrast
 
-`readClock()` draws the wallpaper at 90 px wide, reads the pixels in the box behind the date and clock, converts them to WCAG relative luminance, and computes the median contrast against a light and a dark text colour. The higher one wins.
+`sampleClock()` draws at 240 px wide and samples a rectangle behind the preview date and clock. `chooseClock()` selects the light/dark tone with the smallest fraction of samples below 3:1. Ties choose the larger P10 contrast. The UI reports P10 and weak-area coverage, not a median alone.
+
+P10 is an area-level estimate: about 90% of samples have at least that ratio. It ignores exact glyph placement, shadows and human performance. The old 90 px median algorithm remains a benchmark baseline. See [protocol](EVALUATION.md), raw results and limitations in [stage two](STAGE-TWO.md).
+
+## Dim and new motifs
+
+Dim mixes every palette color toward black or white by interpolating encoded sRGB channels, at -80..80. Geometry is unchanged and the adjusted colors are exported. Six additional procedural generators implement Nitik, Jlamprang, Megamendung, Tambal, Gringsing and Semen. Structural choices and reference access limitations are recorded in [MOTIF-REFERENCES.md](MOTIF-REFERENCES.md). Nitik's weight control changes the size of its square marks. Legacy Tambal uses barycentric positions inside triangular patches; version 3 uses bounded mixed ornaments inside diamond patches. Gringsing places isen inside the exposed part of each overlapping scale.
+
+## Seed collisions and compatibility
+
+Equal settings, aspect, generator version and seed reproduce the same scene. Different seeds do not guarantee different images. Ceplok version 1 has at most 48 combinations of its discrete choices at fixed settings; seeds 0 and 11 collide. Links without a generator version retain that generator. Version 2 adds bounded petal and frame proportions while preserving symmetry. Version 3 refines Nitik, Megamendung and Tambal while preserving the other version-2 generators. Changing motif/seed in the UI selects version 3. Sample SVG/raster hash counts are not a guarantee of perceptual uniqueness across all 100,000 seeds.
+
+## Device screen mapping
+
+The native 3D mode uses a CanvasTexture on the actual screen mesh. The same `buildScene` and `drawScene` functions feed PNG export. Screen UVs are regenerated after asset compression; screen aspect is calibrated to native pixel dimensions. Device lighting does not affect the unlit wallpaper material. Camera rotation changes projection, not composition. Composition shows an orthogonal 2D front bezel: a rounded iPhone frame or a Studio Display frame, with a simple flat monitor stand and no side faces, perspective or cast shadow. Screen width/height follow the exact output ratio; the outer frame includes a proportional bezel. The illustrative date and clock are always shown in Composition, without changing wallpaper or PNG. Resource, resolution and license details are in [DEVICE-ASSETS.md](DEVICE-ASSETS.md).
+
+## Motion and device presets
+
+Frame/device/projection changes use a 140 ms exit and 240 ms entrance; a newer request cancels an unfinished swap. Motif, palette and seed changes crossfade for 320 ms without scaling or blurring the artwork. Slider updates remain direct. The sheet height transitions for 340 ms; 3D rotation buttons ease over 260 ms and dragging interrupts that motion. Reduced motion skips the staged wait and nonessential spatial motion.
+
+Switching HP/Desktop from either native preset selects the corresponding native resolution in Composition as well as 3D. Custom saved dimensions remain pinned until the user chooses another preset. Date, clock, bezels and stand remain preview-only.

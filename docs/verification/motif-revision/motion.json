@@ -1,0 +1,106 @@
+[
+  {
+    "name": "chrome",
+    "version": "155.0.8059.85",
+    "width": 1440,
+    "height": 900,
+    "midMoving": "true",
+    "midOpacity": 0.211662,
+    "violations": [],
+    "errors": []
+  },
+  {
+    "name": "chrome",
+    "version": "155.0.8059.85",
+    "width": 390,
+    "height": 844,
+    "midMoving": "true",
+    "midOpacity": 0.0993963,
+    "violations": [],
+    "errors": []
+  },
+  {
+    "name": "webkit",
+    "version": "26.6",
+    "width": 1440,
+    "height": 900,
+    "midMoving": "true",
+    "midOpacity": 0.262234,
+    "motionSamples": [
+      {
+        "ms": 18,
+        "opacity": 1,
+        "leaving": "false",
+        "device": "desktop"
+      },
+      {
+        "ms": 163,
+        "opacity": 0.262234,
+        "leaving": "true",
+        "device": "desktop"
+      },
+      {
+        "ms": 333,
+        "opacity": 0.45789,
+        "leaving": "false",
+        "device": "hp"
+      }
+    ],
+    "violations": [],
+    "errors": []
+  },
+  {
+    "name": "webkit",
+    "version": "26.6",
+    "width": 390,
+    "height": 844,
+    "midMoving": "true",
+    "midOpacity": 0.470648,
+    "motionSamples": [
+      {
+        "ms": 13,
+        "opacity": 1,
+        "leaving": "false",
+        "device": "desktop"
+      },
+      {
+        "ms": 68,
+        "opacity": 1,
+        "leaving": "false",
+        "device": "desktop"
+      },
+      {
+        "ms": 131,
+        "opacity": 0.470648,
+        "leaving": "true",
+        "device": "desktop"
+      },
+      {
+        "ms": 180,
+        "opacity": 0.089514,
+        "leaving": "true",
+        "device": "desktop"
+      },
+      {
+        "ms": 241,
+        "opacity": 0,
+        "leaving": "true",
+        "device": "desktop"
+      },
+      {
+        "ms": 304,
+        "opacity": 0.291747,
+        "leaving": "false",
+        "device": "hp"
+      },
+      {
+        "ms": 413,
+        "opacity": 0.909569,
+        "leaving": "false",
+        "device": "hp"
+      }
+    ],
+    "violations": [],
+    "errors": []
+  }
+]

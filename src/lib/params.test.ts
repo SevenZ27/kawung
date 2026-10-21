@@ -25,4 +25,13 @@ describe('share link params', () => {
     expect(toSearch({ ...DEFAULTS })).toBe('?m=kawung&s=4821&p=sogan&d=5&w=4&r=0&v=hp')
     expect(toSearch({ ...DEFAULTS, p: 'bebas' })).toContain('&c=3f6b5a&')
   })
+
+  it('round-trips a pinned output and canonicalizes its short and long sides', () => {
+    expect(parseParams(toSearch({ ...DEFAULTS, x: 1179, y: 2556 }))).toEqual({ ...DEFAULTS, x: 1179, y: 2556 })
+    expect(parseParams('?x=2556&y=1179')).toMatchObject({ x: 1179, y: 2556 })
+  })
+
+  it.each(['?x=1200', '?x=0&y=2000', '?x=abc&y=2000', '?x=999999999&y=2000', '?x=1200.5&y=2000'])('ignores incomplete or unsafe dimensions: %s', (query) => {
+    expect(parseParams(query)).toEqual(DEFAULTS)
+  })
 })

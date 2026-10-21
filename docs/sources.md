@@ -1,3 +1,7 @@
+# Historical sources for the first four motif notes
+
+The current ten-motif reference register, access limitations and interpretation boundaries are in [MOTIF-REFERENCES.md](MOTIF-REFERENCES.md). The original notes below are preserved as historical context. Device assets have a separate [license record](DEVICE-ASSETS.md).
+
 # Sources for the motif notes
 
 Each note in the app is a short paraphrase. I opened every page below on 13 Sep 2026 and only kept what the page says.

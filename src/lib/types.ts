@@ -21,6 +21,7 @@ export interface MotifContext {
   pal: Palette
   seed: number
   rng: () => number
+  generation: number
   // x, y are relative to the pattern centre, before rotation.
   inView: (x: number, y: number, margin: number) => boolean
   extent: (step: number) => number

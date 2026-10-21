@@ -1,0 +1,10 @@
+qa/
+test-results/
+playwright-report/
+node_modules/
+.git/
+docs/
+e2e/
+public/models/iphone.glb
+public/models/studio-display.glb
+.env*

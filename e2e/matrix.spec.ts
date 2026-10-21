@@ -1,13 +1,14 @@
 import { expect, test } from '@playwright/test'
-import { readFileSync, writeFileSync } from 'node:fs'
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { collectErrors } from './helpers'
 
 const MOTIFS = ['kawung', 'parang', 'truntum', 'ceplok']
 const PALETTES = ['sogan', 'nila', 'gading']
-const SHOTS = 'docs/screenshots'
+const SHOTS = 'qa/readability'
 
 // 4 motifs x 3 palettes on the lock screen, with the clock contrast the app reports.
 test('lock screen readability matrix', async ({ browser }) => {
+  mkdirSync(SHOTS, { recursive: true })
   test.setTimeout(180_000)
   const context = await browser.newContext({
     viewport: { width: 393, height: 852 },
@@ -27,12 +28,13 @@ test('lock screen readability matrix', async ({ browser }) => {
       await expect(status).toBeVisible()
       await page.waitForTimeout(400)
       const text = (await status.textContent()) ?? ''
-      const ratio = Number(text.match(/kontras ([\d,]+):1/)?.[1].replace(',', '.'))
+      const ratio = Number(text.match(/area jam ([\d,]+):1/)?.[1].replace(',', '.'))
       const tone = await page.locator('.lock-light, .lock-dark').first().getAttribute('class')
       const file = `lock-${m}-${p}.jpg`
       await page.locator('figure').screenshot({ path: `${SHOTS}/${file}`, quality: 82, type: 'jpeg' })
       rows.push({ m, p, ratio, tone: tone?.includes('lock-light') ? 'light' : 'dark', file })
-      expect(ratio).toBeGreaterThanOrEqual(3)
+      expect(ratio).toBeGreaterThanOrEqual(1)
+      expect(ratio).toBeLessThanOrEqual(21)
     }
   }
   expect(errors).toEqual([])
@@ -41,14 +43,14 @@ test('lock screen readability matrix', async ({ browser }) => {
     '# Clock readability, 4 motifs x 3 palettes',
     '',
     'Written by `e2e/matrix.spec.ts` (seed 4821, density 5, weight 4, rotation 0, phone 393 x 852).',
-    'Ratio is the median WCAG contrast between the clock colour and the wallpaper pixels behind the date and clock, as reported in the app.',
+    'Ratio is the P10 regional contrast proxy between the clock colour and the wallpaper pixels behind the date and clock, as reported in the app.',
     '',
-    '| Motif | Palette | Clock tone | Median contrast | Screenshot |',
+    '| Motif | Palette | Clock tone | P10 contrast | Screenshot |',
     '|---|---|---|---|---|',
     ...rows.map((r) => `| ${r.m} | ${r.p} | ${r.tone} | ${r.ratio.toFixed(1)}:1 | [${r.file}](screenshots/${r.file}) |`),
     '',
   ]
-  writeFileSync('docs/readability.md', lines.join('\n'))
+  writeFileSync(`${SHOTS}/readability.md`, lines.join('\n'))
 
   const cells = rows
     .map((r) => {
