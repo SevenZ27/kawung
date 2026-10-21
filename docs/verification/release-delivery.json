@@ -1,0 +1,110 @@
+{
+  "checkedAt": "2026-10-21T07:39:27.091Z",
+  "url": "https://kawung.vercel.app",
+  "sourceCommit": "5f7da57e442a7c15af08ff2fcdb824f87899ae44",
+  "deploymentId": "dpl_6pqXBbQ2mXje13vbRPJe8dgyNYME",
+  "files": [
+    {
+      "path": "assets/DeviceModel-C3XzZZ-6.js",
+      "status": 200,
+      "sha256": "e3ec97b6a586689f27a55b8ad06d744e2723d4aee9b4248ed1580cc74b42f1e5",
+      "identical": true
+    },
+    {
+      "path": "assets/index-C0xihdEi.js",
+      "status": 200,
+      "sha256": "0ec05b50645275422fe1a01f13d64a49f39694cfa46ee1dec00535a08f68c14c",
+      "identical": true
+    },
+    {
+      "path": "assets/index-Dy84S9gy.css",
+      "status": 200,
+      "sha256": "43953a43d018ed476f4f69602d0b22aa2f45320cc368bfc2758b456de7c91cf8",
+      "identical": true
+    },
+    {
+      "path": "assets/inter-cyrillic-ext-wght-normal-BOeWTOD4.woff2",
+      "status": 200,
+      "sha256": "ca157063339ac4ad418f214f3abfed119b0798ab4d377386ce5c9e5a7a435ebd",
+      "identical": true
+    },
+    {
+      "path": "assets/inter-cyrillic-wght-normal-DqGufNeO.woff2",
+      "status": 200,
+      "sha256": "71d5ee93cc1e9f1d520a3a8b66456de18c7879d8df09d57fcd2eaff75fef0075",
+      "identical": true
+    },
+    {
+      "path": "assets/inter-greek-ext-wght-normal-DlzME5K_.woff2",
+      "status": 200,
+      "sha256": "6e9e020a25f9b56d418f2c085b1d3c09725a4da23fe693a5b463064606732190",
+      "identical": true
+    },
+    {
+      "path": "assets/inter-greek-wght-normal-CkhJZR-_.woff2",
+      "status": 200,
+      "sha256": "1be3448e292fbf05ffe176fe1e43f135013d50b1e7d324ad1a558f623d3bb6f6",
+      "identical": true
+    },
+    {
+      "path": "assets/inter-latin-ext-wght-normal-DO1Apj_S.woff2",
+      "status": 200,
+      "sha256": "34b9c504cab7a73e37b746343a449132e56cf7b5481af2cb81dc74dcff25c956",
+      "identical": true
+    },
+    {
+      "path": "assets/inter-latin-wght-normal-Dx4kXJAl.woff2",
+      "status": 200,
+      "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+      "identical": true
+    },
+    {
+      "path": "assets/inter-vietnamese-wght-normal-CBcvBZtf.woff2",
+      "status": 200,
+      "sha256": "5c66f9e07e90c6d4ac4922cc68d60de26c17b1858e677fb5e603fce3952b3ff2",
+      "identical": true
+    },
+    {
+      "path": "device-resources/4078d7df8439e1f156c37ac7.kwp",
+      "status": 200,
+      "sha256": "4078d7df8439e1f156c37ac752f10d10b61419d395a83fbaf7bf9e95fed8d4df",
+      "identical": true
+    },
+    {
+      "path": "device-resources/b5970d2137cc652f23a1ed68.kwp",
+      "status": 200,
+      "sha256": "b5970d2137cc652f23a1ed682aca0c5777eb2d15d63cee3f7636df3653e3d923",
+      "identical": true
+    },
+    {
+      "path": "favicon.svg",
+      "status": 200,
+      "sha256": "488bd79af01157e678c4f5fdce49b2744f98fb41009bdbbf0f7bb84bc533415f",
+      "identical": true
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "334418b12f48bd45c66befceca15002d416740ff471df71da14ed3c39b14baa9",
+      "identical": true
+    },
+    {
+      "path": "og.jpg",
+      "status": 200,
+      "sha256": "a786b8e1881cac2d402d6c002a5f2df909a86f6606560deeb63bb326acdef3eb",
+      "identical": true
+    },
+    {
+      "path": "models/iphone.glb",
+      "status": 404
+    },
+    {
+      "path": "models/studio-display.glb",
+      "status": 404
+    },
+    {
+      "path": ".device-assets/manifest.json",
+      "status": 404
+    }
+  ]
+}

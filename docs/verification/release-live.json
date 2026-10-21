@@ -1,0 +1,93 @@
+{
+  "baseURL": "https://kawung.vercel.app",
+  "cases": [
+    {
+      "engine": "chrome",
+      "version": "155.0.8059.85",
+      "width": 1440,
+      "device": "hp",
+      "visiblePixels": 0.17362428842504743,
+      "errors": [],
+      "violations": [],
+      "overflow": false,
+      "texture": "1320x2868"
+    },
+    {
+      "engine": "chrome",
+      "version": "155.0.8059.85",
+      "width": 1440,
+      "device": "desktop",
+      "visiblePixels": 0.37868162692847124,
+      "errors": [],
+      "violations": [],
+      "overflow": false,
+      "texture": "5120x2880"
+    },
+    {
+      "engine": "chrome",
+      "version": "155.0.8059.85",
+      "width": 390,
+      "device": "hp",
+      "visiblePixels": 0.2989982160010978,
+      "errors": [],
+      "violations": [],
+      "overflow": false,
+      "texture": "1320x2868"
+    },
+    {
+      "engine": "chrome",
+      "version": "155.0.8059.85",
+      "width": 390,
+      "device": "desktop",
+      "visiblePixels": 0.4161017336809844,
+      "errors": [],
+      "violations": [],
+      "overflow": false,
+      "texture": "5120x2880"
+    },
+    {
+      "engine": "webkit",
+      "version": "26.6",
+      "width": 1440,
+      "device": "hp",
+      "visiblePixels": 0.17492368616450787,
+      "errors": [],
+      "violations": [],
+      "overflow": false,
+      "texture": "1320x2868"
+    },
+    {
+      "engine": "webkit",
+      "version": "26.6",
+      "width": 1440,
+      "device": "desktop",
+      "visiblePixels": 0.3794860160052801,
+      "errors": [],
+      "violations": [],
+      "overflow": false,
+      "texture": "5120x2880"
+    },
+    {
+      "engine": "webkit",
+      "version": "26.6",
+      "width": 390,
+      "device": "hp",
+      "visiblePixels": 0.30016010246557795,
+      "errors": [],
+      "violations": [],
+      "overflow": false,
+      "texture": "1320x2868"
+    },
+    {
+      "engine": "webkit",
+      "version": "26.6",
+      "width": 390,
+      "device": "desktop",
+      "visiblePixels": 0.41726362014546453,
+      "errors": [],
+      "violations": [],
+      "overflow": false,
+      "texture": "5120x2880"
+    }
+  ]
+}

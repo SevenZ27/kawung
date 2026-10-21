@@ -6,7 +6,7 @@ Kawung is a browser-based wallpaper editor that turns ten batik-inspired geometr
 
 The [release record](RELEASE.md) identifies the published revision and its verification evidence.
 
-![Phone wallpaper and editor](screenshots/release/restored-chrome-1440-hp-front.png)
+![Phone wallpaper and editor](screenshots/release/live-chrome-1440-hp-front.png)
 
 ## Product and engineering decisions
 

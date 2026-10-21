@@ -4,7 +4,7 @@ A procedural wallpaper editor with ten geometric interpretations of batik motifs
 
 [Live app](https://kawung.vercel.app) · [Portfolio case study](docs/PORTFOLIO.md) · [Release verification](docs/RELEASE.md)
 
-![Studio Display with a live procedural wallpaper](docs/screenshots/release/restored-chrome-1440-desktop-front.png)
+![Studio Display with a live procedural wallpaper](docs/screenshots/release/live-chrome-1440-desktop-front.png)
 
 ## Run locally
 

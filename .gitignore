@@ -11,6 +11,3 @@ DRAFT/
 public/models/*.glb
 qa-*.mjs
 .device-assets/
-
-.vercel
-.env*
